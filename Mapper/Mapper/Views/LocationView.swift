@@ -5,16 +5,23 @@
 //  Created by Nicholas Pilotto on 18/08/23.
 //
 
+import MapKit
 import SwiftUI
 
 struct LocationView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  @EnvironmentObject private var viewModel: LocationViewModel
+  
+  var body: some View {
+    ZStack {
+      Map(coordinateRegion: $viewModel.mapRegion)
+        .ignoresSafeArea()
     }
+  }
 }
 
 struct LocationView_Previews: PreviewProvider {
-    static var previews: some View {
-        LocationView()
-    }
+  static var previews: some View {
+    LocationView()
+      .environmentObject(LocationViewModel())
+  }
 }
