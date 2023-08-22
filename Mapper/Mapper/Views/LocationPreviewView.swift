@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocationPreviewView: View {
+  @EnvironmentObject private var viewModel: LocationViewModel
   let location: Location
   
   var body: some View {
@@ -73,6 +74,7 @@ extension LocationPreviewView {
   
   private var nextButton: some View {
     Button {
+      viewModel.nextButtonPressed()
     } label: {
       Text("Next")
         .font(.headline)
@@ -87,6 +89,7 @@ struct LocationPreviewView_Previews: PreviewProvider {
     // swiftlint:disable force_unwrapping
     LocationPreviewView(location: LocationsDataService.locations.first!)
       .padding()
+      .environmentObject(LocationViewModel())
     // swiftlint:enable force_unwrapping
   }
 }
