@@ -23,6 +23,9 @@ struct LocationView: View {
         locationPreviewStack
       }
     }
+    .sheet(item: $viewModel.sheetLocation) {
+      LocationDetailView(location: $0)
+    }
   }
 }
 
